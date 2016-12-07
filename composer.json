@@ -1,0 +1,28 @@
+{
+    "name": "maqe/laravel-sqs-fifo",
+    "description": "Laravel package that enables support for SQS FIFO Queue",
+    "keywords": ["queue", "job", "laravel", "sqs", "fifo"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "MAQE team",
+            "email": "hello@maqe.com",
+            "homepage": "https://www.maqe.com/"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "illuminate/queue": "~5.1",
+        "illuminate/support": "~5.1",
+        "aws/aws-sdk-php": "~3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "~4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Maqe\\LaravelSqsFifo\\": "src/",
+            "Maqe\\LaravelSqsFifo\\Tests\\": "tests/"
+        }
+    }
+}
