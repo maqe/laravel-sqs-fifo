@@ -32,7 +32,7 @@ class LaravelSqsFifoServiceProvider extends ServiceProvider
      * @param  \Illuminate\Queue\QueueManager  $manager
      * @return void
      */
-    protected function registerSqsConnector($manager)
+    protected function registerSqsFifoConnector($manager)
     {
         $manager->addConnector('sqsfifo', function () {
             return new SqsFifoConnector;
