@@ -16,12 +16,17 @@ class SqsFifoQueue extends SqsQueue
      */
     public function pushRaw($payload, $queue = null, array $options = [])
     {
-        $response = $this->sqs->sendMessage([
+        $message = [
             'QueueUrl' => $this->getQueue($queue),
             'MessageBody' => $payload,
-            'MessageGroupId' => uniqid(),
-            'MessageDeduplicationId' => uniqid(),
-        ]);
+        ];
+
+        if($this->isFifoQueue($queue)) {
+            $message['MessageGroupId'] = uniqid();
+            $message['MessageDeduplicationId'] = uniqid();
+        }
+
+        $response = $this->sqs->sendMessage($message);
 
         return $response->get('MessageId');
     }
@@ -41,13 +46,22 @@ class SqsFifoQueue extends SqsQueue
 
         $delay = $this->getSeconds($delay);
 
-        return $this->sqs->sendMessage([
+        $message = [
             'QueueUrl' => $this->getQueue($queue),
             'MessageBody' => $payload,
             'DelaySeconds' => $delay,
-            'MessageGroupId' => uniqid(),
-            'MessageDeduplicationId' => uniqid(),
+        ];
 
-        ])->get('MessageId');
+        if($this->isFifoQueue($queue)) {
+            $message['MessageGroupId'] = uniqid();
+            $message['MessageDeduplicationId'] = uniqid();
+        }
+
+        return $this->sqs->sendMessage($message)->get('MessageId');
+    }
+
+    protected function isFifoQueue($queue) : bool
+    {
+        return (strpos($this->getQueue($queue), '.fifo') !== FALSE);
     }
 }
