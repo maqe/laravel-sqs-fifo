@@ -4,24 +4,18 @@ Adds support for SQS FIFO Queue to Laravel.
 
 ## Setup
 
-Add package dependency to your project's `composer.json` file:
+Add package dependency to your project:
 
-```json
-"require": {
-    "maqe/laravel-sqs-fifo": "dev-master"
-}
+```console
+composer require maqe/laravel-sqs-fifo
 ```
 
-Run composer update:
-
-```bash
-composer update
-```
-
-Add package's service provider to your project's `config/app.php`:
+Before Laravel 5.5, add package's service provider to your project's `config/app.php`:
 
 ```php
-'providers' => array(
+'providers' => [
     Maqe\LaravelSqsFifo\LaravelSqsFifoServiceProvider::class,
-),
+],
 ```
+
+This package is [auto discoverable](https://laravel-news.com/package-auto-discovery) by Laravel 5.5.
