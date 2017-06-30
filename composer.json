@@ -24,5 +24,12 @@
             "Maqe\\LaravelSqsFifo\\": "src/",
             "Maqe\\LaravelSqsFifo\\Tests\\": "tests/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Maqe\\LaravelSqsFifo\\LaravelSqsFifoServiceProvider"
+            ]
+        }
     }
 }
