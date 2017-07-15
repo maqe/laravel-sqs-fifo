@@ -39,7 +39,11 @@ class SqsFifoQueue extends SqsQueue
     {
         $payload = $this->createPayload($job, $data);
 
-        $delay = $this->getSeconds($delay);
+        if (method_exists($this, 'getSeconds')) { // Support for Laravel < v5.4
+            $delay = $this->getSeconds($delay);
+        } else {
+            $delay = $this->secondsUntil($delay);
+        }
 
         return $this->sqs->sendMessage([
             'QueueUrl' => $this->getQueue($queue),
