@@ -12,9 +12,8 @@
     ],
     "require": {
         "php": ">=7.3",
-        "illuminate/queue": "^7.0",
-        "illuminate/support": "^7.0",
-        "aws/aws-sdk-php": "^3.133"
+        "illuminate/queue": "^8.14",
+        "aws/aws-sdk-php": "^3.159"
     },
     "require-dev": {
         "phpunit/phpunit" : "*"
