@@ -1,5 +1,5 @@
 {
-    "name": "maqe/laravel-sqs-fifo",
+    "name": "odiase/laravel-sqs-fifo",
     "description": "Laravel package that enables support for SQS FIFO Queue",
     "keywords": ["queue", "job", "laravel", "sqs", "fifo"],
     "license": "MIT",
@@ -11,13 +11,12 @@
         }
     ],
     "require": {
-        "php": ">=5.5.9",
-        "illuminate/queue": "~5.1",
-        "illuminate/support": "~5.1",
-        "aws/aws-sdk-php": "~3.0"
+        "php": ">=7.3",
+        "illuminate/queue": "^8.14",
+        "aws/aws-sdk-php": "^3.159"
     },
     "require-dev": {
-        "phpunit/phpunit" : "~4.0"
+        "phpunit/phpunit" : "*"
     },
     "autoload": {
         "psr-4": {
